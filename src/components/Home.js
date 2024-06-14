@@ -118,7 +118,7 @@ const Home = () => {
           Choose a special flight schedule at{" "}
           <span className="text-customBlue2">AirSeat!</span>
         </h2>
-        <div className="grid grid-cols-2 gap-4">
+        <div className="grid grid-cols-2 gap-4 items-center">
           <div>
             <label className="block text-gray-700">From</label>
             <input
@@ -129,6 +129,7 @@ const Home = () => {
               className="w-full border border-gray-300 rounded py-2 px-4 cursor-pointer"
             />
           </div>
+
           <div>
             <label className="block text-gray-700">To</label>
             <input
@@ -139,39 +140,42 @@ const Home = () => {
               className="w-full border border-gray-300 rounded py-2 px-4 cursor-pointer"
             />
           </div>
-          <div className="col-span-2 flex items-center space-x-4">
-            <div className="flex-grow">
-              <label className="block text-gray-700">Date</label>
-              <input
-                type="date"
-                defaultValue={today}
-                min={today}
-                className="w-1/2 border border-gray-300 rounded py-2 px-4"
-              />
-            </div>
 
-            <div className="flex-grow">
-              <label className="block text-gray-700">Return Date</label>
-              <input
-                type="date"
-                disabled={!showReturnDate}
-                className={`w-1/2 border rounded py-2 px-4 ${
-                  showReturnDate
-                    ? "border-gray-300 bg-white"
-                    : "border-gray-300 bg-gray-200 cursor-not-allowed"
-                }`}
-              />
-            </div>
-            <div className="flex items-end">
-              <input
-                type="checkbox"
-                className="toggle-checkbox"
-                id="returnToggle"
-                onChange={toggleReturnDate}
-              />
-              <label htmlFor="returnToggle" className="toggle-label"></label>
-            </div>
+          <div></div>
+          <div className="flex w-full space-x-4 items-center">
+            <label>Round-Trip</label>
+            <input
+              type="checkbox"
+              className="toggle-checkbox"
+              id="returnToggle"
+              onChange={toggleReturnDate}
+            />
+            <label htmlFor="returnToggle" className="toggle-label"></label>
           </div>
+
+          <div className="flex-grow">
+            <label className="block text-gray-700">Date</label>
+            <input
+              type="date"
+              defaultValue={today}
+              min={today}
+              className="w-full border border-gray-300 rounded py-2 px-4"
+            />
+          </div>
+
+          <div className="flex-grow">
+            <label className="block text-gray-700">Return Date</label>
+            <input
+              type="date"
+              disabled={!showReturnDate}
+              className={`w-full border rounded py-2 px-4 ${
+                showReturnDate
+                  ? "border-gray-300 bg-white"
+                  : "border-gray-300 bg-gray-200 cursor-not-allowed"
+              }`}
+            />
+          </div>
+
           <div>
             <label className="block text-gray-700">Passengers</label>
             <input
@@ -185,6 +189,7 @@ const Home = () => {
               className="w-full border border-gray-300 rounded py-2 px-4 cursor-pointer"
             />
           </div>
+
           <div>
             <label className="block text-gray-700">Seat Class</label>
             <input
@@ -282,23 +287,17 @@ const Home = () => {
               {Object.keys(seatClassPrices).map((cls) => (
                 <div
                   key={cls}
-                  className={`flex justify-between items-center p-2 border rounded cursor-pointer hover:bg-customBlue2 ${
-                    tempSeatClass === cls ? "bg-customBlue2 text-white" : ""
+                  className={`flex justify-between items-center p-2 border rounded cursor-pointer hover:bg-gray-200 ${
+                    tempSeatClass === cls ? "bg-customBlue2 text-white hover:text-black" : ""
                   }`}
                   onClick={() => setTempSeatClass(cls)}
                 >
                   <div>
                     <h4
-                      className={`text-black ${
-                        tempSeatClass === cls ? "text-white" : ""
-                      }`}
                     >
                       {cls}
                     </h4>
                     <p
-                      className={`text-sm text-customBlue2 ${
-                        tempSeatClass === cls ? "text-white" : ""
-                      }`}
                     >
                       {seatClassPrices[cls]}
                     </p>

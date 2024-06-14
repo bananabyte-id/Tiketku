@@ -33,7 +33,7 @@ const FlightSelection = () => {
 
   return (
     <>
-      <div className="p-10 shadow-md h-60">
+      <div className="p-10 shadow-md">
         <h2 className="font-bold text-xl text-left md:ml-24 lg:ml-32 xl:ml-44">
           Flight Details
         </h2>
@@ -43,7 +43,7 @@ const FlightSelection = () => {
             className="flex items-center bg-customBlue2 text-white px-4 py-3 rounded-xl w-full md:w-7/12 ml-2 md:ml-28 lg:ml-36 xl:ml-48 mt-8 font-semibold hover:bg-customBlue1"
           >
             <FiArrowLeft size={24} className="mr-2" />
-            JKT > MLB - 2 Passangers - Economy
+            JKT {">"} MLB - 2 Passangers - Economy
           </Link>
           <Link
             to={"/"}
