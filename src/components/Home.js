@@ -269,7 +269,7 @@ const Home = () => {
                 <div>
                 <input
                   type="number"
-                  value={tempPassengers.adults}
+                  value={tempPassengers.children}
                   onChange={(e) =>
                     handlePassengerChange("children", parseInt(e.target.value))
                   }
@@ -293,9 +293,9 @@ const Home = () => {
                 <div>
                 <input
                   type="number"
-                  value={tempPassengers.adults}
+                  value={tempPassengers.infants}
                   onChange={(e) =>
-                    handlePassengerChange("adults", parseInt(e.target.value))
+                    handlePassengerChange("infants", parseInt(e.target.value))
                   }
                   className="w-full border border-gray-300 rounded py-2 px-4"
                   min="0"
