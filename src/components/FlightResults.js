@@ -108,7 +108,6 @@ const FlightResults = () => {
         </div>
         <div className="p-4">
           {/* Tickets */}
-          <p>Hello world</p>
           <div className="space-y-5">
             {flightData.map((data) => (
               <FlightAccordion

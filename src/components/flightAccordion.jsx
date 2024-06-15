@@ -27,7 +27,7 @@ export default function FlightAccordion(props) {
                 <img src={thumbnail} alt="" />
                 <p>{airline} - {flightClass}</p>
               </div>
-              <div className="flex items-center justify-between">
+              <div className="flex items-center justify-between gap-72">
                 <div className="flex gap-10 items-center mt-5 ps-7">
                   <div>
                     <p className="font-bold">{departureTime}</p>
