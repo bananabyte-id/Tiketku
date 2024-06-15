@@ -1,6 +1,9 @@
 import React, { useState } from "react";
 import { FiSearch } from "react-icons/fi";
 import bangkokImage from "../images/bangkok.svg";
+import { IoIosWoman } from "react-icons/io";
+import { MdOutlineMan } from "react-icons/md";
+import { FaBaby } from "react-icons/fa6";
 
 const Home = () => {
   const [selectedButton, setSelectedButton] = useState("All");
@@ -113,7 +116,10 @@ const Home = () => {
         </div>
       </div>
 
-      <div className="bg-white rounded-lg shadow-lg p-6 w-full max-w-7xl mb-10">
+      <div className="bg-white rounded-lg shadow-2xl w-full max-w-7xl mb-10">
+        <div className="p-6">
+
+
         <h2 className="text-xl font-bold mb-4">
           Choose a special flight schedule at{" "}
           <span className="text-customBlue2">AirSeat!</span>
@@ -204,6 +210,7 @@ const Home = () => {
             />
           </div>
         </div>
+        </div>
 
         <button
           onClick={() => {
@@ -217,7 +224,7 @@ const Home = () => {
 
       {showPassengerModal && (
         <div className="fixed inset-0 bg-black bg-opacity-50 flex items-center justify-center z-50">
-          <div className="bg-white p-6 rounded-lg shadow-lg relative">
+          <div className="bg-white p-6 rounded-lg shadow-lg relative w-1/3">
             <button
               onClick={() => setShowPassengerModal(false)}
               className="absolute top-2 right-2 text-gray-700 hover:text-gray-900"
@@ -226,8 +233,17 @@ const Home = () => {
             </button>
             <h3 className="text-lg font-bold mb-4">Select Passengers</h3>
             <div className="space-y-4">
-              <div>
-                <label className="block text-gray-700">Adult</label>
+              <div className="flex justify-between items-center border-b pb-5">
+                <div className="flex items-center gap-3">
+                  <div className="text-2xl">
+                  <MdOutlineMan />
+                  </div>
+                  <div>
+                    <p>Dewasa</p>
+                    <p>(12 Tahun Keatas)</p>
+                  </div>
+                </div>
+                <div>
                 <input
                   type="number"
                   value={tempPassengers.adults}
@@ -237,30 +253,55 @@ const Home = () => {
                   className="w-full border border-gray-300 rounded py-2 px-4"
                   min="0"
                 />
+                </div>
+
               </div>
-              <div>
-                <label className="block text-gray-700">Child</label>
+              <div className="flex justify-between items-center border-b pb-5">
+                <div className="flex items-center gap-3">
+                  <div className="text-2xl">
+                  <IoIosWoman />
+                  </div>
+                  <div>
+                    <p>Anak</p>
+                    <p>(2 - 11 Tahun Keatas)</p>
+                  </div>
+                </div>
+                <div>
                 <input
                   type="number"
-                  value={tempPassengers.children}
+                  value={tempPassengers.adults}
                   onChange={(e) =>
                     handlePassengerChange("children", parseInt(e.target.value))
                   }
                   className="w-full border border-gray-300 rounded py-2 px-4"
                   min="0"
                 />
+                </div>
+                
+
               </div>
-              <div>
-                <label className="block text-gray-700">Infant</label>
+              <div className="flex justify-between items-center ">
+                <div className="flex items-center gap-3">
+                  <div className="text-2xl">
+                  <FaBaby />
+                  </div>
+                  <div>
+                    <p>Bayi</p>
+                    <p>(Dibawah 2 Tahun)</p>
+                  </div>
+                </div>
+                <div>
                 <input
                   type="number"
-                  value={tempPassengers.infants}
+                  value={tempPassengers.adults}
                   onChange={(e) =>
-                    handlePassengerChange("infants", parseInt(e.target.value))
+                    handlePassengerChange("adults", parseInt(e.target.value))
                   }
                   className="w-full border border-gray-300 rounded py-2 px-4"
                   min="0"
                 />
+                </div>
+
               </div>
             </div>
             <button
@@ -275,7 +316,7 @@ const Home = () => {
 
       {showClassModal && (
         <div className="fixed inset-0 bg-black bg-opacity-50 flex items-center justify-center z-50">
-          <div className="bg-white p-6 rounded-lg shadow-lg relative">
+          <div className="bg-white p-6 rounded-lg shadow-lg relative w-1/2">
             <button
               onClick={() => setShowClassModal(false)}
               className="absolute top-2 right-2 text-gray-700 hover:text-gray-900"
@@ -316,11 +357,13 @@ const Home = () => {
       )}
 
       {showFromCityModal && (
-        <div className="fixed inset-0 bg-black bg-opacity-50 flex items-center justify-center z-50">
-          <div className="bg-white p-6 rounded-lg shadow-lg relative min-w-[600px] max-w-lg max-h-[90%]">
+        <div className="fixed inset-0 bg-black bg-opacity-50 flex items-center justify-center z-50 ">
+          <div className="bg-white p-6 rounded-lg shadow-lg relative w-1/2 max-h-[90%]">
+          <div className="flex item-center relative gap-3">
+
             <button
               onClick={() => setShowFromCityModal(false)}
-              className="absolute top-2 right-2 text-gray-700 hover:text-gray-900"
+              className="absolute right-2 text-gray-700 text-3xl hover:text-gray-900"
             >
               &times;
             </button>
@@ -329,13 +372,19 @@ const Home = () => {
               value={fromCitySearch}
               onChange={(e) => setFromCitySearch(e.target.value)}
               placeholder="Search for a country or city"
-              className="w-full border border-gray-300 rounded py-2 px-4 mb-4"
+              className="w-11/12 border border-gray-300 rounded py-2 px-4 mb-4"
             />
+
+          </div>
+              <div className="flex justify-between item-center mt-3 mb-3">
+                <p className="font-bold">Pencarian Terikini</p>
+                <button className="text-red-600 font-semibold">Hapus</button>
+              </div>
             <div className="space-y-4 max-h-60 overflow-y-auto">
               {filteredToCities.map((city) => (
                 <div
                   key={city}
-                  className="p-2 border rounded cursor-pointer hover:bg-customBlue2 hover:text-white"
+                  className="p-2 border-b rounded cursor-pointer hover:bg-customBlue2 hover:text-white"
                   onClick={() => handleSelectFromCity(city)}
                 >
                   {city}
@@ -348,10 +397,12 @@ const Home = () => {
 
       {showToCityModal && (
         <div className="fixed inset-0 bg-black bg-opacity-50 flex items-center justify-center z-50">
-          <div className="bg-white p-6 rounded-lg shadow-lg relative  min-w-[600px] max-w-lg max-h-[90%]">
+          <div className="bg-white p-6 rounded-lg shadow-lg relative w-1/2 max-h-[90%]">
+          <div className="flex item-center relative gap-3">
+
             <button
               onClick={() => setShowToCityModal(false)}
-              className="absolute top-2 right-2 text-gray-700 hover:text-gray-900"
+              className="absolute right-2 text-gray-700 text-3xl hover:text-gray-900"
             >
               &times;
             </button>
@@ -360,13 +411,19 @@ const Home = () => {
               value={toCitySearch}
               onChange={(e) => setToCitySearch(e.target.value)}
               placeholder="Search for a country or city"
-              className="w-full border border-gray-300 rounded py-2 px-4 mb-4"
+              className="w-11/12 border border-gray-300 rounded py-2 px-4 mb-4"
             />
+            
+          </div>
+            <div className="flex justify-between item-center mt-3 mb-3">
+                <p className="font-bold">Pencarian Terikini</p>
+                <button className="text-red-600 font-semibold">Hapus</button>
+              </div>
             <div className="space-y-4 max-h-60 overflow-y-auto">
               {filteredToCities.map((city) => (
                 <div
                   key={city}
-                  className="p-2 border rounded cursor-pointer hover:bg-customBlue2 hover:text-white"
+                  className="p-2 border-b rounded cursor-pointer hover:bg-customBlue2 hover:text-white"
                   onClick={() => handleSelectToCity(city)}
                 >
                   {city}
@@ -381,7 +438,7 @@ const Home = () => {
         <h2 className="text-2xl font-bold mb-6">Favorite Destinations</h2>
         <div className="flex gap-2 mb-4">
           <button
-            className={`px-4 py-2 flex items-center rounded ${
+            className={`px-4 py-2 flex items-center rounded-xl ${
               selectedButton === "All"
                 ? "bg-customBlue1 text-white"
                 : "bg-blue-100 text-black hover:bg-customBlue2 hover:text-white"
@@ -392,7 +449,7 @@ const Home = () => {
             All
           </button>
           <button
-            className={`px-4 py-2 flex items-center rounded ${
+            className={`px-4 py-2 flex items-center rounded-xl ${
               selectedButton === "Asia"
                 ? "bg-customBlue1 text-white"
                 : "bg-blue-100 text-black hover:bg-customBlue2 hover:text-white"
@@ -403,7 +460,7 @@ const Home = () => {
             Asia
           </button>
           <button
-            className={`px-4 py-2 flex items-center rounded ${
+            className={`px-4 py-2 flex items-center rounded-xl ${
               selectedButton === "North America"
                 ? "bg-customBlue1 text-white"
                 : "bg-blue-100 text-black hover:bg-customBlue2 hover:text-white"
@@ -414,7 +471,7 @@ const Home = () => {
             North America
           </button>
           <button
-            className={`px-4 py-2 flex items-center rounded ${
+            className={`px-4 py-2 flex items-center rounded-xl ${
               selectedButton === "South America"
                 ? "bg-customBlue1 text-white"
                 : "bg-blue-100 text-black hover:bg-customBlue2 hover:text-white"
@@ -425,7 +482,7 @@ const Home = () => {
             South America
           </button>
           <button
-            className={`px-4 py-2 flex items-center rounded ${
+            className={`px-4 py-2 flex items-center rounded-xl ${
               selectedButton === "Australia"
                 ? "bg-customBlue1 text-white"
                 : "bg-blue-100 text-black hover:bg-customBlue2 hover:text-white"
@@ -436,7 +493,7 @@ const Home = () => {
             Australia
           </button>
           <button
-            className={`px-4 py-2 flex items-center rounded ${
+            className={`px-4 py-2 flex items-center rounded-xl ${
               selectedButton === "Europe"
                 ? "bg-customBlue1 text-white"
                 : "bg-blue-100 text-black hover:bg-customBlue2 hover:text-white"
@@ -447,7 +504,7 @@ const Home = () => {
             Europe
           </button>
           <button
-            className={`px-4 py-2 flex items-center rounded ${
+            className={`px-4 py-2 flex items-center rounded-xl ${
               selectedButton === "Africa"
                 ? "bg-customBlue1 text-white"
                 : "bg-blue-100 text-black hover:bg-customBlue2 hover:text-white"
