@@ -1,6 +1,8 @@
 import React, { useState } from "react";
 import LongArrowIcon from "../icons/long_arrow.svg";
 import Modal from "./modal";
+import FlightAccordion from "./flightAccordion";
+import flights from "../utils/api";
 
 import { FiBox } from "react-icons/fi";
 import { CiHeart } from "react-icons/ci";
@@ -9,6 +11,8 @@ import { LuArrowUpDown } from "react-icons/lu";
 
 const FlightResults = () => {
   const [showModal, setShowModal] = useState(false);
+  const flightData = flights;
+  console.log(flightData);
 
   const toggleModal = () => {
     setShowModal(!showModal);
@@ -68,7 +72,7 @@ const FlightResults = () => {
   return (
     <div className="grid p-8 space-y-4">
       <button
-      onClick={toggleModal}
+        onClick={toggleModal}
         type="button"
         className="border-2 border-customBlue2 text-customBlue2 px-8 py-2 rounded-full justify-self-end"
       >
@@ -79,8 +83,6 @@ const FlightResults = () => {
       </button>
       {/* Modal Filter */}
       <Modal showModal={showModal} toggleModal={toggleModal} />
-
-      
 
       <div className="flex">
         <div className="p-4">
@@ -107,7 +109,26 @@ const FlightResults = () => {
         <div className="p-4">
           {/* Tickets */}
           <p>Hello world</p>
-          Hello world
+          <div className="space-y-5">
+            {flightData.map((data) => (
+              <FlightAccordion
+                key={data.id} // Pastikan setiap elemen memiliki key unik jika digunakan dalam iterasi
+                airline={data.airline}
+                flightClass={data.class}
+                departureTime={data.departureTime}
+                arrivalTime={data.arrivalTime}
+                totalTime={data.totalTime}
+                type={data.type}
+                departureAirportId={data.departureAirportId}
+                arrivalAirportId={data.arrivalAirportId}
+                price={data.price}
+                date={data.date}
+                dep_airport={data.dep_airport}
+                code={data.code}
+                arr_airport={data.arr_airport}
+              />
+            ))}
+          </div>
         </div>
       </div>
     </div>

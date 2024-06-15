@@ -1,6 +1,16 @@
+import { useState } from "react";
+
 const Modal = ({showModal, toggleModal}) => {
+    const [selectedOption, setSelectedOption] = useState(null)    
+
+    const handleOptionClicked = (index) => {
+        setSelectedOption(index)
+    }
+
     return (
         <>
+           
+
       {showModal && (
         <div
           id="default-modal"
@@ -38,30 +48,30 @@ const Modal = ({showModal, toggleModal}) => {
               </div>
               {/* Modal body */}
               <div>
-                <div className="p-5 border-b">
+                <div className={`p-5 border-b ${selectedOption === 0 ? "bg-customBlue2" : "" } cursor-pointer hover:bg-customBlue1 hover:text-white`} onClick={() => handleOptionClicked(0)}>
                     <p className="font-bold text-md">Harga - Termurah</p>
                 </div>
-                <div className="p-5 border-b">
+                <div className={`p-5 border-b ${selectedOption === 1 ? "bg-customBlue2" : "" } cursor-pointer hover:bg-customBlue1 hover:text-white`} onClick={() => handleOptionClicked(1)}>
                     <p className="font-bold text-md">Durasi - Terpendek</p>
                 </div>
-                <div className="p-5 border-b">
+                <div className={`p-5 border-b ${selectedOption === 2 ? "bg-customBlue2" : "" } cursor-pointer hover:bg-customBlue1 hover:text-white`} onClick={() => handleOptionClicked(2)}>
                     <p className="font-bold text-md">Keberangkatan - Paling Awal</p>
                 </div>
-                <div className="p-5 border-b">
+                <div className={`p-5 border-b ${selectedOption === 3 ? "bg-customBlue2" : "" } cursor-pointer hover:bg-customBlue1 hover:text-white`} onClick={() => handleOptionClicked(3)}>
                     <p className="font-bold text-md">Keberangkatan - Paling Akhir</p>
                 </div>
-                <div className="p-5 border-b">
+                <div className={`p-5 border-b ${selectedOption === 4? "bg-customBlue2" : "" } cursor-pointer hover:bg-customBlue1 hover:text-white`} onClick={() => handleOptionClicked(4)}>
                     <p className="font-bold text-md">Harga - Termurah</p>
                 </div>
-                <div className="p-5 border-b">
+                <div className={`p-5 border-b ${selectedOption === 5 ? "bg-customBlue2" : "" } cursor-pointer hover:bg-customBlue1 hover:text-white`} onClick={() => handleOptionClicked(5)}>
                     <p className="font-bold text-md">Kedatangan - Paling Awal</p>
                 </div>
-                <div className="p-5 border-b">
+                <div className={`p-5 border-b ${selectedOption === 6 ? "bg-customBlue2" : "" } cursor-pointer hover:bg-customBlue1 hover:text-white`} onClick={() => handleOptionClicked(6)}>
                     <p className="font-bold text-md">Kedatangan - Paling Akhir</p>
                 </div>
               </div>
               <div className="flex justify-end p-7">
-                <button type="button" className="font-bold">Pilih</button>
+                <button type="button" className="font-bold bg-customBlue2 rounded-2xl p-3 w-32">Pilih</button>
               </div>
             </div>
           </div>
