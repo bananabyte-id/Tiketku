@@ -26,7 +26,7 @@ const FlightResults = () => {
     if (isLoading == false) {
       setTimeout(() => {
         setIsLoading(true);
-      }, 2000);
+      }, 1000);
     }
   };
 
@@ -126,10 +126,10 @@ const FlightResults = () => {
           <div className="space-y-5">
             {!isLoading ? (
               <div className="flex justify-center">
-                <img src={loadingIcon} className="aspect-square w-1/5" />
+                <img src={loadingIcon} alt="load" className="aspect-square w-1/5" />
               </div>
             ) : (
-              <div>
+              <div className="space-y-4">
                 {flightData.length > 0 ? (
                   flightData.map((data) => (
                     <FlightAccordion
@@ -151,7 +151,7 @@ const FlightResults = () => {
                   ))
                 ) : (
                   <div className="flex justify-center">
-                    <img src={emptyIcon} className="aspect-square w-1/5" />
+                    <img src={emptyIcon} alt="empty" className="aspect-square w-1/5" />
                   </div>
                 )}
                 

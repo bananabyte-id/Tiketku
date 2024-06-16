@@ -38,7 +38,7 @@ const Home = () => {
     children: 0,
     infants: 0,
   });
-  const [seatClass, setSeatClass] = useState("Economy");
+  const [seatClass, setSeatClass] = useState("Choose seat class ");
   const [tempSeatClass, setTempSeatClass] = useState("");
 
   const cities = [
@@ -96,7 +96,7 @@ const Home = () => {
       display.push(`${children} ${children === 1 ? "Child" : "Children"}`);
     if (infants > 0)
       display.push(`${infants} ${infants === 1 ? "Infant" : "Infant"}`);
-    return display.length > 0 ? display.join(", ") : "Passengers";
+    return display.length > 0 ? display.join(", ") : "Select Passengers";
   };
 
   const filteredFromCities = cities.filter((city) =>
@@ -251,6 +251,7 @@ const Home = () => {
                           setShowPassengerModal(true);
                         }}
                         readOnly
+                        placeholder="Choose passengers"
                         className="w-full border-b-2  border-t-white border-l-white border-r-white rounded cursor-pointer"
                       />
                     </div>
