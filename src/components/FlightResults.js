@@ -70,7 +70,7 @@ const FlightResults = () => {
   };
 
   return (
-    <div className="grid p-8 space-y-4">
+    <div className="grid p-4 space-y-4">
       <button
         onClick={toggleModal}
         type="button"
@@ -81,10 +81,8 @@ const FlightResults = () => {
           Termurah
         </span>
       </button>
-      {/* Modal Filter */}
       <Modal showModal={showModal} toggleModal={toggleModal} />
 
-      <div className="flex">
         <div className="p-4">
           <div className="p-5 bg-background shadow-[0_3px_15px_-3px_rgba(0,0,0,0.3)] aspect-square w-60 rounded-2xl">
             <div className="self-center space-y-2">
@@ -106,8 +104,8 @@ const FlightResults = () => {
             </div>
           </div>
         </div>
+        
         <div className="p-4">
-          {/* Tickets */}
           <div className="space-y-5">
             {flightData.map((data) => (
               <FlightAccordion
@@ -130,7 +128,6 @@ const FlightResults = () => {
           </div>
         </div>
       </div>
-    </div>
     // <>
     //   <div className="container mx-auto px-[15.5rem]">
     //     <div className="grid grid-cols-12 gap-5 mt-5">

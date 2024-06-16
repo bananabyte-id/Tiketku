@@ -259,7 +259,7 @@ const Home = () => {
 
       {showPassengerModal && (
         <div className="fixed inset-0 bg-black bg-opacity-50 flex items-center justify-center z-50">
-          <div className="bg-white p-6 rounded-lg shadow-lg relative w-1/3">
+          <div className="bg-white p-6 rounded-lg shadow-lg relative">
             <button
               onClick={() => setShowPassengerModal(false)}
               className="absolute top-2 right-2 text-gray-700 hover:text-gray-900"
@@ -290,14 +290,14 @@ const Home = () => {
                   />
                 </div>
               </div>
-              <div className="flex justify-between items-center border-b pb-5">
+              <div className="flex justify-between items-center border-b pb-5 space-x-3">
                 <div className="flex items-center gap-3">
                   <div className="text-2xl">
                     <IoIosWoman />
                   </div>
                   <div>
                     <p>Anak</p>
-                    <p>(2 - 11 Tahun Keatas)</p>
+                    <p>(2 - 11 Tahun Keatas){" "}</p>
                   </div>
                 </div>
                 <div>
@@ -350,7 +350,7 @@ const Home = () => {
 
       {showClassModal && (
         <div className="fixed inset-0 bg-black bg-opacity-50 flex items-center justify-center z-50">
-          <div className="bg-white p-6 rounded-lg shadow-lg relative w-1/2">
+          <div className="bg-white p-6 rounded-lg shadow-lg relative w-[98%]">
             <button
               onClick={() => setShowClassModal(false)}
               className="absolute top-2 right-2 text-gray-700 hover:text-gray-900"
@@ -388,7 +388,7 @@ const Home = () => {
 
       {showFromCityModal && (
         <div className="fixed inset-0 bg-black bg-opacity-50 flex items-center justify-center z-50 ">
-          <div className="bg-white p-6 rounded-lg shadow-lg relative w-1/2 max-h-[90%]">
+          <div className="bg-white p-6 rounded-lg shadow-lg relative w-[90%] max-h-[90%]">
             <div className="flex item-center relative gap-3">
               <button
                 onClick={() => setShowFromCityModal(false)}
@@ -425,7 +425,7 @@ const Home = () => {
 
       {showToCityModal && (
         <div className="fixed inset-0 bg-black bg-opacity-50 flex items-center justify-center z-50">
-          <div className="bg-white p-6 rounded-lg shadow-lg relative w-1/2 max-h-[90%]">
+          <div className="bg-white p-6 rounded-lg shadow-lg relative w-[90%] max-h-[90%]">
             <div className="flex item-center relative gap-3">
               <button
                 onClick={() => setShowToCityModal(false)}
