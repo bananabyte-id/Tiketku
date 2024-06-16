@@ -9,6 +9,7 @@ import { CiHeart } from "react-icons/ci";
 import { FiDollarSign } from "react-icons/fi";
 import { LuArrowUpDown } from "react-icons/lu";
 import loadingIcon from "../icons/loading.svg";
+import emptyIcon from "../icons/empty.svg"
 
 const FlightResults = () => {
   const [showModal, setShowModal] = useState(false);
@@ -129,24 +130,31 @@ const FlightResults = () => {
               </div>
             ) : (
               <div>
-                {flightData.map((data) => (
-                  <FlightAccordion
-                    key={data.id}
-                    airline={data.airline}
-                    flightClass={data.class}
-                    departureTime={data.departureTime}
-                    arrivalTime={data.arrivalTime}
-                    totalTime={data.totalTime}
-                    type={data.type}
-                    departureAirportId={data.departureAirportId}
-                    arrivalAirportId={data.arrivalAirportId}
-                    price={data.price}
-                    date={data.date}
-                    dep_airport={data.dep_airport}
-                    code={data.code}
-                    arr_airport={data.arr_airport}
-                  />
-                ))}
+                {flightData.length > 0 ? (
+                  flightData.map((data) => (
+                    <FlightAccordion
+                      key={data.id}
+                      airline={data.airline}
+                      flightClass={data.class}
+                      departureTime={data.departureTime}
+                      arrivalTime={data.arrivalTime}
+                      totalTime={data.totalTime}
+                      type={data.type}
+                      departureAirportId={data.departureAirportId}
+                      arrivalAirportId={data.arrivalAirportId}
+                      price={data.price}
+                      date={data.date}
+                      dep_airport={data.dep_airport}
+                      code={data.code}
+                      arr_airport={data.arr_airport}
+                    />
+                  ))
+                ) : (
+                  <div className="flex justify-center">
+                    <img src={emptyIcon} className="aspect-square w-1/5" />
+                  </div>
+                )}
+                
               </div>
             )}
           </div>
