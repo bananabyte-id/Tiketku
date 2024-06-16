@@ -21,8 +21,8 @@ const Home = () => {
   const [showClassModal, setShowClassModal] = useState(false);
   const [showFromCityModal, setShowFromCityModal] = useState(false);
   const [showToCityModal, setShowToCityModal] = useState(false);
-  const [fromCity, setFromCity] = useState("Jakarta (JKTA)");
-  const [toCity, setToCity] = useState("Melbourne (MLB)");
+  const [fromCity, setFromCity] = useState("");
+  const [toCity, setToCity] = useState("");
   const [fromCitySearch, setFromCitySearch] = useState("");
   const [toCitySearch, setToCitySearch] = useState("");
   const [passengers, setPassengers] = useState({
@@ -152,7 +152,7 @@ const Home = () => {
                   value={fromCity}
                   onClick={() => setShowFromCityModal(true)}
                   readOnly
-                  placeholder="please select a location"
+                  placeholder="Please select a location"
                   className="w-full border-b-2  border-t-white border-l-white border-r-white rounded cursor-pointer"
                 />
               </div>
@@ -169,6 +169,7 @@ const Home = () => {
                 <input
                   type="text"
                   value={toCity}
+                  placeholder="Please select a location"
                   onClick={() => setShowToCityModal(true)}
                   readOnly
                   className="w-full border-b-2  border-t-white border-l-white border-r-white rounded cursor-pointer"

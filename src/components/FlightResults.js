@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
 import LongArrowIcon from "../icons/long_arrow.svg";
 import Modal from "./modal";
 import FlightAccordion from "./flightAccordion";
@@ -8,11 +8,26 @@ import { FiBox } from "react-icons/fi";
 import { CiHeart } from "react-icons/ci";
 import { FiDollarSign } from "react-icons/fi";
 import { LuArrowUpDown } from "react-icons/lu";
+import loadingIcon from "../icons/loading.svg";
 
 const FlightResults = () => {
   const [showModal, setShowModal] = useState(false);
   const flightData = flights;
-  console.log(flightData);
+  const [isLoading, setIsLoading] = useState(false);
+
+  useEffect(() => {
+    setTimeout(() => {
+      handleLoading();
+    }, 1000);
+  }, []);
+
+  const handleLoading = () => {
+    if (isLoading == false) {
+      setTimeout(() => {
+        setIsLoading(true);
+      }, 2000);
+    }
+  };
 
   const toggleModal = () => {
     setShowModal(!showModal);
@@ -84,104 +99,60 @@ const FlightResults = () => {
       <Modal showModal={showModal} toggleModal={toggleModal} />
 
       <div className="grid grid-cols-1 2xl:grid-cols-6">
-
-      <div className="p-4">
-        <div className="p-5 bg-background shadow-[0_3px_15px_-3px_rgba(0,0,0,0.3)] aspect-square w-60 rounded-2xl">
-          <div className="self-center space-y-2">
-            <div className="mt-3 mb-5">
-              <p className="font-semibold text-lg">Filter</p>
-            </div>
-            <div className="flex items-center gap-2 border-b pb-2 text-xl">
-              <FiBox />
-              <p>Transit</p>
-            </div>
-            <div className="flex items-center gap-2 border-b pb-2 text-xl">
-              <CiHeart />
-              <p>Fasilitas</p>
-            </div>
-            <div className="flex items-center gap-2 border-b pb-2 text-xl">
-              <FiDollarSign />
-              <p>Harga</p>
+        <div className="p-4">
+          <div className="p-5 bg-background shadow-[0_3px_15px_-3px_rgba(0,0,0,0.3)] aspect-square w-60 rounded-2xl">
+            <div className="self-center space-y-2">
+              <div className="mt-3 mb-5">
+                <p className="font-semibold text-lg">Filter</p>
+              </div>
+              <div className="flex items-center gap-2 border-b pb-2 text-xl">
+                <FiBox />
+                <p>Transit</p>
+              </div>
+              <div className="flex items-center gap-2 border-b pb-2 text-xl">
+                <CiHeart />
+                <p>Fasilitas</p>
+              </div>
+              <div className="flex items-center gap-2 border-b pb-2 text-xl">
+                <FiDollarSign />
+                <p>Harga</p>
+              </div>
             </div>
           </div>
         </div>
-      </div>
 
-      <div className="p-4 col-span-5">
-        <div className="space-y-5">
-          {flightData.map((data) => (
-            <FlightAccordion
-              key={data.id} // Pastikan setiap elemen memiliki key unik jika digunakan dalam iterasi
-              airline={data.airline}
-              flightClass={data.class}
-              departureTime={data.departureTime}
-              arrivalTime={data.arrivalTime}
-              totalTime={data.totalTime}
-              type={data.type}
-              departureAirportId={data.departureAirportId}
-              arrivalAirportId={data.arrivalAirportId}
-              price={data.price}
-              date={data.date}
-              dep_airport={data.dep_airport}
-              code={data.code}
-              arr_airport={data.arr_airport}
-            />
-          ))}
+        <div className="p-4 col-span-5">
+          <div className="space-y-5">
+            {!isLoading ? (
+              <div className="flex justify-center">
+                <img src={loadingIcon} className="aspect-square w-1/5" />
+              </div>
+            ) : (
+              <div>
+                {flightData.map((data) => (
+                  <FlightAccordion
+                    key={data.id}
+                    airline={data.airline}
+                    flightClass={data.class}
+                    departureTime={data.departureTime}
+                    arrivalTime={data.arrivalTime}
+                    totalTime={data.totalTime}
+                    type={data.type}
+                    departureAirportId={data.departureAirportId}
+                    arrivalAirportId={data.arrivalAirportId}
+                    price={data.price}
+                    date={data.date}
+                    dep_airport={data.dep_airport}
+                    code={data.code}
+                    arr_airport={data.arr_airport}
+                  />
+                ))}
+              </div>
+            )}
+          </div>
         </div>
       </div>
-      </div>
-
     </div>
-    // <>
-    //   <div className="container mx-auto px-[15.5rem]">
-    //     <div className="grid grid-cols-12 gap-5 mt-5">
-    //       <div className="col-span-9 justify-end">
-    //         {" "}
-    //         <div className="mb-3">
-    //           <div className="ms-0">
-    //             {flightdetails
-    //               .filter((order) => order.month === "January")
-    //               .map((order) => (
-    //                 <div
-    //                   key={order.id}
-    //                   className={`mx-4 mb-2 ring-1 shadow-md rounded-xl px-4 py-3 cursor-pointer border-2 ${
-    //                     selectedOrderId === order.id ? "border-customBlue2" : ""
-    //                   }`}
-    //                   onClick={() => handleCardClick(order)}
-    //                 >
-
-    //                   <div className="grid grid-cols-12 my-4 gap-12 place-content-between justify-between">
-    //                     <div className="col-span-4 flex items-start justify-center">
-    //                       <span className="ms-2 -mt-[2px]">
-    //                         <h5 className="font-bold ">
-    //                           {order.departureTime.split(" - ")[0]}
-    //                         </h5>
-    //                         <p className="text-sm">{order.departureAirportId}</p>
-    //                       </span>
-    //                     </div>
-    //                     <div className="col-span-4 flex flex-col items-center justify-center">
-    //                       <span>{order.totalTime}</span>
-    //                       <img src={LongArrowIcon} alt="" />
-    //                       <span>Direct</span>
-    //                     </div>
-
-    //                     <div className="col-span-4 flex items-start justify-center">
-    //                       <span className="ms-2 -mt-[2px]">
-    //                         <h5 className="font-bold ">
-    //                           {order.arrivalTime.split(" - ")[0]}
-    //                         </h5>
-    //                         <p className="text-sm">{order.arrivalAirportId}</p>
-    //                       </span>
-    //                     </div>
-    //                   </div>
-    //                 </div>
-    //               ))}
-    //           </div>
-    //         </div>
-    //       </div>
-    //     </div>
-    //   </div>
-    // </>
   );
 };
 

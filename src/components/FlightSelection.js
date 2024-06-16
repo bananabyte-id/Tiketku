@@ -8,6 +8,8 @@ const FlightSelection = () => {
   const [hoveredDay, setHoveredDay] = useState(null);
   const [dates, setDates] = useState([]);
 
+  console.log(selectedDay)
+
   useEffect(() => {
     const today = new Date();
     setSelectedDay(0);
