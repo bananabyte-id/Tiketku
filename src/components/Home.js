@@ -12,6 +12,7 @@ import {
 import { MdAirplaneTicket } from "react-icons/md";
 import { IoCalendarSharp } from "react-icons/io5";
 import bannerImage from "../images/bannerIMG.jpg";
+import { TbArrowsExchange } from "react-icons/tb";
 
 const Home = () => {
   const [selectedButton, setSelectedButton] = useState("All");
@@ -112,13 +113,12 @@ const Home = () => {
     <main className="flex flex-col items-center mt-14">
       <div className="-z-40 w-full max-w-8xl">
         <div className="-z-10 absolute bg-customBlue1 opacity-60  inset-0 top-48 h-40"></div>
-        <div className="z-10 absolute bg-[#FFE9CA] opacity-100 rounded-[55px] inset-4 top-24 h-80">
-        <img
+        <div className="z-10 absolute bg-[#FFE9CA] opacity-100 rounded-[55px] inset-4 2xl:inset-32 top-24 h-80">
+          <img
             src={bannerImage}
             alt="Bangkok"
             className="absolute rounded-[55px] opacity-55 h-80 right-0"
           />
-
         </div>
         <div className="z-20 relative flex justify-between items-center p-6 bg-customYellow rounded-lg min-h-[200px]">
           <div className="flex flex-col items-start">
@@ -130,119 +130,147 @@ const Home = () => {
             </span>
           </div>
         </div>
-
       </div>
 
+      <div className="p-2">
       <div className="bg-white rounded-lg shadow-2xl w-full max-w-7xl mb-10">
-        <div className="p-8">
+        <div className="p-8 space-y-8 md:space-y-4">
           <h2 className="text-xl font-bold mb-4">
             Choose a special flight schedule at{" "}
             <span className="text-customBlue2">AirSeat!</span>
           </h2>
-          <div className="grid grid-cols-2 gap-6 items-center">
-            <div className="flex grid-cols-2 gap-6 items-center">
-              <div className="flex grid-cols-2 gap-4 items-center">
-                <FaPlaneDeparture className="text-xl" />
-                <label className="block text-gray-700">From</label>
-              </div>
-              <input
-                type="text"
-                value={fromCity}
-                onClick={() => setShowFromCityModal(true)}
-                readOnly
-                className="w-full border-b-2  border-t-white border-l-white border-r-white rounded py-2 px-4 cursor-pointer"
-              />
-            </div>
 
-            <div className="flex grid-cols-2 gap-6 items-center">
-              <div className="flex grid-cols-2 gap-4 items-center">
-                <FaPlaneArrival className="text-xl" />
-                <label className="block text-gray-700">To</label>
-              </div>
-              <input
-                type="text"
-                value={toCity}
-                onClick={() => setShowToCityModal(true)}
-                readOnly
-                className="w-full border-b-2  border-t-white border-l-white border-r-white rounded py-2 px-4 cursor-pointer"
-              />
-            </div>
-
-            <div></div>
-            <div className="flex w-full  justify-end items-end">
-              <div className="flex items-center space-x-4">
-                <label>Round-Trip</label>
+          <div className="flex flex-col md:flex-row p-2">
+            <div className="flex flex-1 items-center justify-center">
+              <div className="flex grid-cols-2 gap-4 items-center w-full">
+                <div className="flex flex-none w-28 grid-cols-2 gap-4 items-center justify-center">
+                  <FaPlaneDeparture className="text-xl" />
+                  <label className="block text-gray-700">From</label>
+                </div>
                 <input
-                  type="checkbox"
-                  className="toggle-checkbox"
-                  id="returnToggle"
-                  onChange={toggleReturnDate}
+                  type="text"
+                  value={fromCity}
+                  onClick={() => setShowFromCityModal(true)}
+                  readOnly
+                  placeholder="please select a location"
+                  className="w-full border-b-2  border-t-white border-l-white border-r-white rounded cursor-pointer"
                 />
-                <label htmlFor="returnToggle" className="toggle-label"></label>
+              </div>
+            </div>
+            <div className="flex flex-none w-full md:w-20 h-20  items-center justify-center ">
+              <TbArrowsExchange className="rounded-full bg-black text-white w-7 h-7 p-1 cursor-pointer" />
+            </div>
+            <div className="flex flex-1 items-center justify-center">
+              <div className="flex grid-cols-2 gap-4 items-center w-full">
+                <div className="flex flex-none w-28 grid-cols-2 gap-4 items-cente justify-center">
+                  <FaPlaneArrival className="text-xl" />
+                  <label className="block text-gray-700">To</label>
+                </div>
+                <input
+                  type="text"
+                  value={toCity}
+                  onClick={() => setShowToCityModal(true)}
+                  readOnly
+                  className="w-full border-b-2  border-t-white border-l-white border-r-white rounded cursor-pointer"
+                />
+              </div>
+            </div>
+          </div>
+
+          <div className="flex flex-col 2xl:flex-row w-full space-y-0 md:space-y-4">
+            <div className="flex flex-1 items-center justify-center w-full">
+              <div className="flex w-full">
+                <div className="flex flex-none w-32  items-center justify-center">
+                  <div className="flex grid-cols-2 gap-4 items-center">
+                    <IoCalendarSharp className="text-xl" />
+                    <label className="block text-gray-700">Date</label>
+                  </div>
+                </div>
+                <div className="grid w-full">
+                  <div className="flex flex-col md:flex-row w-full">
+                    <div className="flex flex-1 items-center justify-center  p-2">
+                      <div className="flex flex-col w-full space-y-2">
+                        <label className="block text-gray-700">Departure</label>
+                        <input
+                          type="date"
+                          defaultValue={today}
+                          min={today}
+                          className="w-full border-b-2  border-t-white border-l-white border-r-white rounded"
+                        />
+                      </div>
+                    </div>
+                    <div className="flex flex-1 items-center justify-center  p-2">
+                      <div className="flex flex-col w-full space-y-2">
+                        <label className="block text-gray-700">Arrival</label>
+                        <input
+                          type="date"
+                          disabled={!showReturnDate}
+                          className={`w-full border rounded ${
+                            showReturnDate
+                              ? "border-b-2  border-t-white border-l-white border-r-white bg-white"
+                              : "border-gray-300 bg-gray-200 cursor-not-allowed"
+                          }`}
+                        />
+                      </div>
+                    </div>
+                    <div className="flex justify-end items-start mt-2">
+                      <input
+                        type="checkbox"
+                        className="toggle-checkbox"
+                        id="returnToggle"
+                        onChange={toggleReturnDate}
+                      />
+                      <label
+                        htmlFor="returnToggle"
+                        className="toggle-label"
+                      ></label>
+                    </div>
+                  </div>
+                </div>
               </div>
             </div>
 
-            <div className="flex grid-cols-2 gap-6 items-center">
-              <div className="flex grid-cols-2 gap-4 items-center">
-                <IoCalendarSharp className="text-xl" />
-                <label className="block text-gray-700">Departure</label>
+            <div className="flex flex-1 items-center justify-center">
+              <div className="flex w-full">
+                <div className="flex flex-none w-32  items-center justify-center">
+                  <div className="flex grid-cols-2 gap-4 items-center">
+                    <MdOutlineAirlineSeatReclineNormal className="text-2xl" />
+                    <label className="block text-gray-700">Seat</label>
+                  </div>
+                </div>
+                <div className="flex flex-col md:flex-row w-full">
+                  <div className="flex flex-1  p-2 items-center justify-center">
+                    <div className="flex flex-col w-full space-y-2">
+                      <label className="block text-gray-700">Passengers</label>
+                      <input
+                        type="text"
+                        value={displayPassengers()}
+                        onClick={() => {
+                          setTempPassengers(passengers);
+                          setShowPassengerModal(true);
+                        }}
+                        readOnly
+                        className="w-full border-b-2  border-t-white border-l-white border-r-white rounded cursor-pointer"
+                      />
+                    </div>
+                  </div>
+                  <div className="flex flex-1 p-2 items-center justify-center">
+                    <div className="flex flex-col w-full space-y-2">
+                      <label className="block text-gray-700">Class</label>
+                      <input
+                        type="text"
+                        value={seatClass}
+                        onClick={() => {
+                          setTempSeatClass("");
+                          setShowClassModal(true);
+                        }}
+                        readOnly
+                        className="w-full border-b-2  border-t-white border-l-white border-r-white roundedcursor-pointer"
+                      />
+                    </div>
+                  </div>
+                </div>
               </div>
-              <input
-                type="date"
-                defaultValue={today}
-                min={today}
-                className="w-full border-b-2  border-t-white border-l-white border-r-white rounded py-2 px-4"
-              />
-            </div>
-
-            <div className="flex grid-cols-2 gap-6 items-center">
-              <div className="flex grid-cols-2 gap-4 items-center">
-                <IoCalendarSharp className="text-xl" />
-                <label className="block text-gray-700">Arrival</label>
-              </div>
-              <input
-                type="date"
-                disabled={!showReturnDate}
-                className={`w-full border rounded py-2 px-4 ${
-                  showReturnDate
-                    ? "border-b-2  border-t-white border-l-white border-r-white bg-white"
-                    : "border-gray-300 bg-gray-200 cursor-not-allowed"
-                }`}
-              />
-            </div>
-
-            <div className="flex grid-cols-2 gap-6 items-center">
-              <div className="flex grid-cols-2 gap-4 items-center">
-                <MdOutlineAirlineSeatReclineNormal className="text-2xl" />
-                <label className="block text-gray-700">Passengers</label>
-              </div>
-              <input
-                type="text"
-                value={displayPassengers()}
-                onClick={() => {
-                  setTempPassengers(passengers);
-                  setShowPassengerModal(true);
-                }}
-                readOnly
-                className="w-full border-b-2  border-t-white border-l-white border-r-white rounded py-2 px-4 cursor-pointer"
-              />
-            </div>
-
-            <div className="flex grid-cols-2 gap-6 items-center">
-              <div className="flex grid-cols-2 gap-4 items-center">
-                <MdAirplaneTicket className="text-2xl" />
-                <label className="block text-gray-700">Class</label>
-              </div>
-              <input
-                type="text"
-                value={seatClass}
-                onClick={() => {
-                  setTempSeatClass("");
-                  setShowClassModal(true);
-                }}
-                readOnly
-                className="w-full border-b-2  border-t-white border-l-white border-r-white rounded py-2 px-4 cursor-pointer"
-              />
             </div>
           </div>
         </div>
@@ -255,6 +283,7 @@ const Home = () => {
         >
           Search Flights
         </button>
+      </div>
       </div>
 
       {showPassengerModal && (
@@ -297,7 +326,7 @@ const Home = () => {
                   </div>
                   <div>
                     <p>Anak</p>
-                    <p>(2 - 11 Tahun Keatas){" "}</p>
+                    <p>(2 - 11 Tahun Keatas) </p>
                   </div>
                 </div>
                 <div>
@@ -400,7 +429,7 @@ const Home = () => {
                 type="text"
                 value={fromCitySearch}
                 onChange={(e) => setFromCitySearch(e.target.value)}
-                placeholder="Search for a country or city"
+                placeholder="Please select a location"
                 className="w-11/12 border border-gray-300 rounded py-2 px-4 mb-4"
               />
             </div>
@@ -408,7 +437,7 @@ const Home = () => {
               <p className="font-bold">Pencarian Terikini</p>
               <button className="text-red-600 font-semibold">Hapus</button>
             </div>
-            <div className="space-y-4 max-h-60 overflow-y-auto">
+            <bdiv className="space-y-4 max-h-60 overflow-y-auto">
               {filteredToCities.map((city) => (
                 <div
                   key={city}
@@ -418,7 +447,7 @@ const Home = () => {
                   {city}
                 </div>
               ))}
-            </div>
+            </bdiv>
           </div>
         </div>
       )}
@@ -437,7 +466,7 @@ const Home = () => {
                 type="text"
                 value={toCitySearch}
                 onChange={(e) => setToCitySearch(e.target.value)}
-                placeholder="Search for a country or city"
+                placeholder="Please select a location"
                 className="w-11/12 border border-gray-300 rounded py-2 px-4 mb-4"
               />
             </div>

@@ -33,11 +33,11 @@ const FlightSelection = () => {
 
   return (
     <>
-      <div className="p-10 shadow-md">
+      <div className="grid p-10 shadow-md">
         <h2 className="font-bold text-xl text-left md:ml-24 lg:ml-32 xl:ml-44">
           Flight Details
         </h2>
-        <div className="flex justify-center md:justify-start">
+        <div className="flex justify-self-center w-full">
           <Link
             to={"/"}
             className="flex items-center bg-customBlue2 text-white px-4 py-3 rounded-xl w-full md:w-7/12 ml-2 md:ml-28 lg:ml-36 xl:ml-48 mt-8 font-semibold hover:bg-customBlue1"
@@ -54,7 +54,7 @@ const FlightSelection = () => {
         </div>
 
         
-        <div className="p-4 sm:p-6 max-w-7xl mx-auto">
+        <div className="p-4 sm:p-6 max-w-7xl justify-self-center w-full">
           <div className="grid grid-cols-2 sm:grid-cols-3 md:grid-cols-7 gap-2 mb-4 text-center">
             {dates.map((date, index) => (
               <div
